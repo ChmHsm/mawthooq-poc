@@ -27,7 +27,7 @@ jobs:
           npm run build --if-present
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* .dist -r
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -57,4 +57,4 @@ jobs:
         with:
           app-name: 'mawthooq-poc-angular'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0079911F21C0464EBDDA6A7A0072664C }}
-          package: ./dist/angularfirebase-authentication
+          package: ./dist/angularfiebase-authentication
