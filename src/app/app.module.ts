@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
 
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -23,6 +25,9 @@ import {APP_BASE_HREF} from '@angular/common';
 // service
 import { AuthService } from './shared/services/auth.service';
 
+export function playerFactory() {
+  return player;
+}
 
 @NgModule({
   declarations: [
@@ -41,6 +46,7 @@ import { AuthService } from './shared/services/auth.service';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     AppRoutingModule,
+    LottieModule.forRoot({ player: playerFactory })
   ],
   providers: [AuthService, {provide: APP_BASE_HREF, useValue : '/' }],
   bootstrap: [AppComponent],

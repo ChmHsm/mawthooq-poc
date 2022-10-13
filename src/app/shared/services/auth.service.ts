@@ -118,9 +118,11 @@ export class AuthService {
         this.SetUserData(result.user).then(() =>
         {
         this.router.navigate(['dashboard']);});
+        return true;
       })
       .catch((error) => {
         window.alert(error);
+        return false;
       });
   }
 

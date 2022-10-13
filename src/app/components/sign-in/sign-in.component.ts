@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AnimationItem } from 'lottie-web';
+import { AnimationOptions } from 'ngx-lottie';
 import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
@@ -8,7 +10,33 @@ import { AuthService } from '../../shared/services/auth.service';
 })
 
 export class SignInComponent implements OnInit {
+  displayLoader = false;
+  options: AnimationOptions = {
+    path: './assets/animation.json',
+  };
+
   constructor(public authService: AuthService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
+
+  animationCreated(animationItem: AnimationItem): void {
+    console.log(animationItem);
+  }
+
+  twitterAuth(){
+    this.authService.TwitterAuth().then(
+      res =>{
+        this.displayLoader = res;
+      }
+    );
+  }
+
+  googleAuth(){
+    this.authService.GoogleAuth().then(
+      res =>{
+        this.displayLoader = res;
+      }
+    );
+  }
 }

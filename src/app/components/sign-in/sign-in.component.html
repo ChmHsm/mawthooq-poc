@@ -8,7 +8,7 @@
           <button
             type="button"
             class="btn googleBtn"
-            (click)="authService.GoogleAuth()"
+            (click)="googleAuth()"
           >
             <i class="fab fa-google"></i>
             Log in with Google
@@ -17,7 +17,7 @@
         <div class="formGroup">
           <button type="button"
           class="btn twitterBtn"
-          (click)="authService.TwitterAuth()">
+          (click)="twitterAuth()">
           <i class="fab fa-twitter"></i>
           Log in with Twitter
             
@@ -27,7 +27,11 @@
         <!-- <div class="forgotPassword">
           <span routerLink="/forgot-password">Forgot Password?</span>
         </div> -->
+        <div *ngIf="displayLoader">
+        <ng-lottie [options]="options" height="2rem" (animationCreated)="animationCreated($event)"></ng-lottie>
       </div>
+      </div>
+      
 
       <!-- <div class="redirectToLogin">
         <span
