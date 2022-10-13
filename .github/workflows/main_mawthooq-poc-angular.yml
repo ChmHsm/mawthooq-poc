@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - mawthooq-poc-angular
+name: Build and deploy Node.js app to Azure Web App - mawthooq-poc
 
 on:
   push:
@@ -55,6 +55,6 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'mawthooq-poc-angular'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0079911F21C0464EBDDA6A7A0072664C }}
+          app-name: 'mawthooq-poc'
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_48326ccec20346f39d1337f663f9a194 }}
           package: ./dist/angularfiebase-authentication
