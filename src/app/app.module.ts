@@ -18,6 +18,7 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 
 // routing
 import { AppRoutingModule } from './app-routing.module';
+import {APP_BASE_HREF} from '@angular/common';
 
 // service
 import { AuthService } from './shared/services/auth.service';
@@ -41,7 +42,7 @@ import { AuthService } from './shared/services/auth.service';
     AngularFireDatabaseModule,
     AppRoutingModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, {provide: APP_BASE_HREF, useValue : '/' }],
   bootstrap: [AppComponent],
 })
 
