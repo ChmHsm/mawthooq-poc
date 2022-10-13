@@ -6,7 +6,7 @@
         <!-- Calling GoogleAuth Api from AuthService -->
         <div class="formGroup">
           <button
-            type="button"
+            type="button" [disabled]="displayLoader"
             class="btn googleBtn"
             (click)="googleAuth()"
           >
@@ -15,7 +15,7 @@
           </button>
         </div>
         <div class="formGroup">
-          <button type="button"
+          <button type="button" [disabled]="displayLoader"
           class="btn twitterBtn"
           (click)="twitterAuth()">
           <i class="fab fa-twitter"></i>
