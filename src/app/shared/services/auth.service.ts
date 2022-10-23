@@ -8,19 +8,25 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs';
+import { OAuthProvider } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   userData: any; // Save logged in user data
-
+  provider = new OAuthProvider('microsoft.com');
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
     public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {
+    this.provider.setCustomParameters({
+      // Force re-consent.
+      prompt: 'consent',
+      // Target specific email with login hint.
+    });
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
@@ -107,7 +113,14 @@ export class AuthService {
   TwitterAuth() {
     return this.AuthLogin(new auth.TwitterAuthProvider());
   }
+
+  MicrosoftAuth() {
+    return this.AuthLogin(this.provider);
+  }
   
+  FacebookAuth() {
+    return this.AuthLogin(new auth.FacebookAuthProvider());
+  }
 
   // Auth logic to run auth providers
   AuthLogin(provider: any) {

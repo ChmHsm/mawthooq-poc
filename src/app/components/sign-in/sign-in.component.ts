@@ -24,8 +24,24 @@ export class SignInComponent implements OnInit {
     console.log(animationItem);
   }
 
+  microsoftAuth(){
+    this.authService.MicrosoftAuth().then(
+      res =>{
+        this.displayLoader = res;
+      }
+    );
+  }
+
   twitterAuth(){
     this.authService.TwitterAuth().then(
+      res =>{
+        this.displayLoader = res;
+      }
+    );
+  }
+
+  facebookAuth(){
+    this.authService.FacebookAuth().then(
       res =>{
         this.displayLoader = res;
       }
